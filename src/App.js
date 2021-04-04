@@ -2,14 +2,9 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Bookshelf from './Bookshelf.js'
-import { BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router, Link} from 'react-router-dom'
 
 class BooksApp extends React.Component {
-  //constructor() {
-  //  super();
-
-  //  this.shelfChange = this.shelfChange.bind(this);
-  //}
 
   state={
     books: [],
@@ -42,14 +37,16 @@ class BooksApp extends React.Component {
 
     return(
       <Router>
-        <div className="list-books">
-          <div className="list-books-title">
-                <h1>Matthieu's Book library</h1>
+        <div className="app">
+          <div className="list-books">
+            <div className="list-books-title">
+              <h1>Matthieu's Book library</h1>
+            </div>
+            {booksReading.length ? <Bookshelf title={'Currently Reading'} books={booksReading} shelfChange={this.shelfChange}/> : null}
+            {booksRead.length ? <Bookshelf title={'Read'} books={booksRead} shelfChange={this.shelfChange}/> : null}
+            {booksWantToRead.length ? <Bookshelf title={'Want To Read'} books={booksWantToRead} shelfChange={this.shelfChange}/> : null}
+            {booksNoneAssigned.length ? <Bookshelf title={'Not assigned'} books={booksNoneAssigned} shelfChange={this.shelfChange}/> : null}
           </div>
-          {booksReading.length ? <Bookshelf title={'Currently Reading'} books={booksReading} shelfChange={this.shelfChange}/> : null}
-          {booksRead.length ? <Bookshelf title={'Read'} books={booksRead} shelfChange={this.shelfChange}/> : null}
-          {booksWantToRead.length ? <Bookshelf title={'Want To Read'} books={booksWantToRead} shelfChange={this.shelfChange}/> : null}
-          {booksNoneAssigned.length ? <Bookshelf title={'Not assigned'} books={booksNoneAssigned} shelfChange={this.shelfChange}/> : null}
         </div>
       </Router>
       );
