@@ -36,7 +36,7 @@ class App extends React.Component {
                 <Home state={this.state} shelfChange={this.shelfChange} />
               </Route>
               <Route exact path='/search' >
-                <SearchPage state={this.state} shelfChange={this.shelfChange} />
+                <SearchPage />
               </Route>
             </Switch>
         </Router>

@@ -2,16 +2,21 @@ import React from 'react'
 import './App.css'
 import Book from './Book.js'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
 class SearchPage extends React.Component {
 
     state={
-        query: ''
+        query: '',
+        queryBooks: []
     }
 
     updateQuery = (query) => {
         this.setState({
             query: query.trim()})
+        BooksAPI.search(query).then((books)=>
+        this.setState({
+            queryBooks: books}))
     }
 
     render() {
@@ -38,13 +43,10 @@ class SearchPage extends React.Component {
                 </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid">
-              {this.props.state.books.map((book)=>{
-                      return <li key={book.title}><Book book={book} shelfChange={this.props.shelfChange}/></li>
-                    })}
-              </ol>
+                <ol className="books-grid">
+                    <li></li>
+                </ol>
             </div>
-            {JSON.stringify(this.state)}
           </div>
         )
     }
