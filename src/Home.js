@@ -1,37 +1,15 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Bookshelf from './Bookshelf.js'
 import { Link } from 'react-router-dom'
 
 class Home extends React.Component {
-
-    state={
-      books: [],
-    }
-  
-    componentDidMount() {
-      BooksAPI.getAll()
-      .then((books)=>{
-        this.setState({
-          books
-        })
-      });
-    }
-  
-    shelfChange = (book,shelf) => {
-      const stateCopy = Object.assign({}, this.state);
-      const bookIndex = stateCopy.books.indexOf(book);
-      BooksAPI.update(book,shelf);
-      stateCopy.books[bookIndex].shelf=shelf;
-      this.setState(stateCopy);
-      }
   
     render() {
-      const booksReading = this.state.books.filter((book)=>book.shelf==="currentlyReading");
-      const booksRead = this.state.books.filter((book)=>book.shelf==="read");
-      const booksWantToRead = this.state.books.filter((book)=>book.shelf==="wantToRead");
-      const booksNoneAssigned = this.state.books.filter((book)=>book.shelf==="none");
+      const booksReading = this.props.state.books.filter((book)=>book.shelf==="currentlyReading");
+      const booksRead = this.props.state.books.filter((book)=>book.shelf==="read");
+      const booksWantToRead = this.props.state.books.filter((book)=>book.shelf==="wantToRead");
+      const booksNoneAssigned = this.props.state.books.filter((book)=>book.shelf==="none");
   
       return(
           <div className="app">
@@ -39,10 +17,10 @@ class Home extends React.Component {
               <div className="list-books-title">
                 <h1>Matthieu's Book library</h1>
               </div>
-              {booksReading.length ? <Bookshelf title={'Currently Reading'} books={booksReading} shelfChange={this.shelfChange}/> : null}
-              {booksRead.length ? <Bookshelf title={'Read'} books={booksRead} shelfChange={this.shelfChange}/> : null}
-              {booksWantToRead.length ? <Bookshelf title={'Want To Read'} books={booksWantToRead} shelfChange={this.shelfChange}/> : null}
-              {booksNoneAssigned.length ? <Bookshelf title={'Not assigned'} books={booksNoneAssigned} shelfChange={this.shelfChange}/> : null}
+              {booksReading.length ? <Bookshelf title={'Currently Reading'} books={booksReading} shelfChange={this.props.shelfChange}/> : null}
+              {booksRead.length ? <Bookshelf title={'Read'} books={booksRead} shelfChange={this.props.shelfChange}/> : null}
+              {booksWantToRead.length ? <Bookshelf title={'Want To Read'} books={booksWantToRead} shelfChange={this.props.shelfChange}/> : null}
+              {booksNoneAssigned.length ? <Bookshelf title={'Not assigned'} books={booksNoneAssigned} shelfChange={this.props.shelfChange}/> : null}
             </div>
             <div className="open-search">
               <Link to='/search'>
