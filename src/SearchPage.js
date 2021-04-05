@@ -11,22 +11,23 @@ class SearchPage extends React.Component {
         items: []
     }
 
-    updateQuery = async (query) => {
+    updateQuery = (query) => {
         this.setState({
             query: query
         })
-        var items = await this.searchBooks(query);
-        if (Object.keys(items)[0]==='error') items=[];
+        !query ?
         this.setState({
-            items: items
-        })
-    }
-
-    searchBooks = async (query) => {
-        if (!query) return [];
-        const books = await BooksAPI.search(query);
-        return books;
-    }
+            items: []
+        }) :
+        BooksAPI.search(query).then(books=>
+            Object.keys(books)[0]==='error' ?
+            this.setState({
+                items: []
+            }) :
+            this.setState({
+                items: books
+        }))}
+    
 
     render() {
         return(
@@ -41,16 +42,13 @@ class SearchPage extends React.Component {
             </div>
             <div className="search-books-results">
                 <ol className="books-grid">
-                    {
-                        this.state.items.map((item)=>{
-                            return(
-                                <li key={item.title}><Book book={item} shelfChange={this.props.shelfChange}/></li>
-                            )
-                        })
-                    }
+                {
+                    this.state.items.map(item=>{
+                        return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
+                    })
+                }
                 </ol>
             </div>
-            {JSON.stringify(this.state)}
           </div>
         )
     }
