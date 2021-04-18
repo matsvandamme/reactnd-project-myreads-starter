@@ -44,7 +44,13 @@ class SearchPage extends React.Component {
                 <ol className="books-grid">
                 {
                     this.state.items.map(item=>{
-                        return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
+                        if (!item.shelf) {
+                            item.shelf='none';
+                            console.log(item);
+                            return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
+                        } else {
+                            return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
+                        }
                     })
                 }
                 </ol>
