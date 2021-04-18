@@ -26,14 +26,19 @@ class App extends React.Component {
     BooksAPI.update(book,shelf);
     stateCopy.books[bookIndex].shelf=shelf;
     this.setState(stateCopy);
+    console.log(this.state);
     }
 
   shelfChangeSearch = (book,shelf) => {
     const stateCopy = Object.assign({}, this.state);
+    if (!stateCopy.book) {stateCopy.books.push(book)}
+    console.log('ok');
     const bookIndex = stateCopy.books.indexOf(book);
+    console.log(bookIndex);
     BooksAPI.update(book,shelf);
     stateCopy.books[bookIndex].shelf=shelf;
     this.setState(stateCopy);
+    console.log('test');
     }
 
   render() {

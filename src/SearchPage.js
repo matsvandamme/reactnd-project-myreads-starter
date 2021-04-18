@@ -46,11 +46,8 @@ class SearchPage extends React.Component {
                     this.state.items.map(item=>{
                         if (!item.shelf) {
                             item.shelf='none';
-                            console.log(item);
-                            return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
-                        } else {
-                            return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
                         }
+                        return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
                     })
                 }
                 </ol>
