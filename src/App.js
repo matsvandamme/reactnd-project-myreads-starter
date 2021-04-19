@@ -21,6 +21,7 @@ class App extends React.Component {
   }
 
   shelfChange = (book,shelf) => {
+    console.log(book);
     const stateCopy = Object.assign({}, this.state);
     const bookIndex = stateCopy.books.indexOf(book);
     BooksAPI.update(book,shelf);
@@ -49,7 +50,7 @@ class App extends React.Component {
                 <Home state={this.state} shelfChange={this.shelfChange} />
               </Route>
               <Route exact path='/search' >
-                <SearchPage shelfChange={this.shelfChangeSearch} />
+                <SearchPage shelfChange={this.shelfChangeSearch} state={this.state} />
               </Route>
             </Switch>
         </Router>

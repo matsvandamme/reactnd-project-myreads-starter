@@ -43,11 +43,11 @@ class SearchPage extends React.Component {
             <div className="search-books-results">
                 <ol className="books-grid">
                 {
-                    this.state.items.map(item=>{
+                    this.state.items.filter(item => (item.imageLinks) && (item.authors)).map(item=>{
                         if (!item.shelf) {
                             item.shelf='none';
                         }
-                        return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>
+                        return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>                           
                     })
                 }
                 </ol>
