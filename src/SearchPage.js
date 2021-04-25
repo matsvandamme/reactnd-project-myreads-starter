@@ -19,15 +19,15 @@ class SearchPage extends React.Component {
         this.setState({
             items: []
         }) :
-        BooksAPI.search(query).then(books=>
-            Object.keys(books)[0]==='error' ?
+        BooksAPI.search(query).then(books=>{
+            if (Object.keys(books)[0]==='error') { 
             this.setState({
                 items: []
-            }) :
-            this.setState({
-                items: books
-        }))}
-    
+            })} else {
+                books.forEach(book=>book.shelf='none')
+                this.setState({
+                    items: books
+        })}})}
 
     render() {
         return(
@@ -43,13 +43,20 @@ class SearchPage extends React.Component {
             <div className="search-books-results">
                 <ol className="books-grid">
                 {
-                    this.state.items.filter(item => (item.imageLinks) && (item.authors)).map(item=>{
-                        if (!item.shelf) {
-                            item.shelf='none';
+
+                    this.state.items.filter(item => (item.imageLinks) && (item.authors)).map(searchPageBook=>{
+
+                        const matchingBook = this.props.state.books.find(homePageBook =>
+                                (homePageBook.id === searchPageBook.id)
+                            )
+
+                        if (matchingBook) {
+                            return <li key={matchingBook.id}><Book book={matchingBook} shelfChange={this.props.shelfChange}/></li>
+                        } else {
+                            return <li key={searchPageBook.id}><Book book={searchPageBook} shelfChange={this.props.shelfChange}/></li>
                         }
-                        return <li key={item.id}><Book book={item} shelfChange={this.props.shelfChange}/></li>                           
-                    })
-                }
+
+                })}
                 </ol>
             </div>
           </div>
