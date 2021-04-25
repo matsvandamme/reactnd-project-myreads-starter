@@ -1,21 +1,21 @@
 <!-- GETTING STARTED -->
-## Getting Started
-
-Get a local copy from Github
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Installation
+
+1. Install on MacOS
+
+    * Install Homebrew by running ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"``` in the terminal.
+
+Check that it was installed by running brew --version. You should see the version number that was installed.
+Run brew install node.
+Run node --version.
+Check that npm was installed as well by running npm --version.
+Run brew install yarn.
+Run npm --version.
+Run yarn install && yarn --version
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/matsvandamme/reactnd-project-myreads-starter.git
    ```
 2. Install NPM packages
    ```sh
