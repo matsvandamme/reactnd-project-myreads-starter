@@ -5,13 +5,19 @@
 
     * Install Homebrew by running ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"``` in the terminal.
 
-Check that it was installed by running brew --version. You should see the version number that was installed.
-Run brew install node.
-Run node --version.
-Check that npm was installed as well by running npm --version.
-Run brew install yarn.
-Run npm --version.
-Run yarn install && yarn --version
+    * Check that it was installed by running ```brew --version```. You should see the version number that was installed.
+
+    * Run ```brew install node```.
+
+    * Run ```node --version```.
+    
+    * Check that npm was installed as well by running ```npm --version```.
+    
+    * Run ```brew install yarn```.
+
+    * Run ```npm --version```.
+
+    * Run ```yarn install && yarn --version```.
 
 1. Clone the repo
    ```sh
