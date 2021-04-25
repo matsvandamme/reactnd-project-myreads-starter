@@ -21,25 +21,22 @@ class App extends React.Component {
   }
 
   shelfChange = (book,shelf) => {
-    console.log(book);
     const stateCopy = Object.assign({}, this.state);
     const bookIndex = stateCopy.books.indexOf(book);
     BooksAPI.update(book,shelf);
     stateCopy.books[bookIndex].shelf=shelf;
     this.setState(stateCopy);
-    console.log(this.state);
+
     }
 
   shelfChangeSearch = (book,shelf) => {
     const stateCopy = Object.assign({}, this.state);
-    if (!stateCopy.book) {stateCopy.books.push(book)}
-    console.log('ok');
+    if (!stateCopy.books.find(item=>item.id===book.id)) {stateCopy.books.push(book)}
     const bookIndex = stateCopy.books.indexOf(book);
-    console.log(bookIndex);
     BooksAPI.update(book,shelf);
     stateCopy.books[bookIndex].shelf=shelf;
+    console.log(stateCopy.books)
     this.setState(stateCopy);
-    console.log('test');
     }
 
   render() {
