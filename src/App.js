@@ -35,7 +35,6 @@ class App extends React.Component {
     const bookIndex = stateCopy.books.indexOf(book);
     BooksAPI.update(book,shelf);
     stateCopy.books[bookIndex].shelf=shelf;
-    console.log(stateCopy.books)
     this.setState(stateCopy);
     }
 
