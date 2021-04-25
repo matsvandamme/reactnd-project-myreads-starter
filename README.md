@@ -19,15 +19,11 @@
 
     * Run ```yarn install && yarn --version```.
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/matsvandamme/reactnd-project-myreads-starter.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+2. Install on Windows
 
+    Please download the Node.js Installer, go through the installation process, and restart your computer once you're done.
+    Please follow the yarn installation instructions.
+    Run ```yarn --version``` to make sure yarn has been successfully installed.
 
 
 <!-- USAGE EXAMPLES -->
