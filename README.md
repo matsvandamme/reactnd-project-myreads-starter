@@ -4,7 +4,7 @@
 ## About
 MyReads is a book library web-app built on the React JS framework.
 
-## Install of Yarn 
+## Install Yarn 
 
 1. Install on MacOS
 
@@ -41,32 +41,14 @@ MyReads is a book library web-app built on the React JS framework.
 * Clone the MyReads Github repository using ```git clone https://github.com/matsvandamme/reactnd-project-myreads-starter.git```
 * Run ```cd reactnd-project-myreads-starter```
 
+## Start server
+* Run ```yarn start```.
+* Open the development server on ```localhost:3000```.
+
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
